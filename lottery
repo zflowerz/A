@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lotto.css">
+</head>
+<body>
+    <h2>Lotto Day!</h2>
+    <h3>Guess what numbers will come out now!</h3>
+    
+    <h1 id="lottery">?</h1>
+    <script src="lotto.js"></script>
+</body>
+</html>
+
+// html
+
+#lottery {
+    cursor: pointer;
+}
+
+// css
+
+let lottery = document.querySelector('#lottery');
+
+let lotto_arr = [];
+
+for (let i = 0; i < 6; i++) {
+    let lotto_num = Math.floor(Math.random() * 44) + 1;
+    lotto_arr.push(lotto_num);
+
+    for (let j in lotto_arr) {
+        while (lotto_num == lotto_arr[j]) {
+            lotto_num = Math.floor(Math.random() * 44) + 1;
+        }
+    }
+}
+
+lottery.addEventListener('click', function () {
+    lottery.innerHTML = lotto_arr;
+})
+
+// js
